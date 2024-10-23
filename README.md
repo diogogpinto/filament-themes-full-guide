@@ -110,8 +110,7 @@ export default {
         './app/Filament/Clusters/Products/**/*.php',
         './resources/views/filament/clusters/products/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
-        // Added the following lines of code
-        './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php',
+        './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php', // Added this line of code
         './vendor/awcodes/filament-curator/resources/**/*.blade.php',
     ],
 }
