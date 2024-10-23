@@ -73,8 +73,7 @@ Now we shall edit the `CmsPanelProvider.php` file and add the viteTheme method t
 return $panel
     ->id('cms')
     ->path('cms')
-    // Added the following line of code
-    ->viteTheme('resources/css/filament/cms/theme.css')
+    ->viteTheme('resources/css/filament/cms/theme.css') // Added this line of code
 ```
 
 Our panel now knows we are using a custom theme created under that path.
@@ -110,7 +109,8 @@ export default {
         './app/Filament/Clusters/Products/**/*.php',
         './resources/views/filament/clusters/products/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
-        './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php', // Added this line of code
+        // Added the following lines of code
+        './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php',
         './vendor/awcodes/filament-curator/resources/**/*.blade.php',
     ],
 }
