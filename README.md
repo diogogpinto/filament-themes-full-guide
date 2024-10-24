@@ -11,7 +11,10 @@ I am assuming you already have a Filament Panel setup. If you don't have one, pl
 
 ## Creating a theme
 
-In this example, we will be creating a custom theme for a Panel named `cms`.
+In this example, we will be creating a custom theme for Filament's default panel, the `admin`panel.
+
+> [!note]
+> The same steps apply for any other panel you may have in your Filament project
 
 ### Creating the theme using the terminal
 
@@ -21,11 +24,11 @@ In your project's root directory, run:
 php artisan make:filament-theme
 ```
 
-It will scan your app for all the panels you have created and let you select which panel this themes applies to. Select the panel it belongs to. In this particular case, we will select the panel `cms`.
+It will scan your app for all the panels you have installed and let you select which panel this themes applies to. Select the panel which you wish to customize. In this particular case, we will select the panel `admin`.
 
 ![Create Theme Terminal Command](./screenshots/create-theme.png)
 
-After you've selected the panel, the terminal will give you all further instructions, but we'll go for each one step by step.
+After you've selected the panel, the terminal will give you all further instructions, but we'll go by each one step by step.
 
 ![After Creating the Theme](./screenshots/after-create-theme.png)
 
@@ -43,8 +46,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                // Added the following line of code
-                'resources/css/filament/cms/theme.css'
+                // Add the following line of code
+                'resources/css/filament/admin/theme.css'
             ],
             refresh: [
                 ...refreshPaths,
@@ -60,25 +63,26 @@ export default defineConfig({
 })
 ```
 
-See how we've added `resources/css/filament/cms/theme.css` to that array? This will tell vite where our custom theme is located when running the build process.
+See how we've added `resources/css/filament/admin/theme.css` to that array? This will tell vite where our custom theme is located when running the build process.
 
 >[!note]
-> If you have other themes, you can add them in the same array
+> If you have other themes for other panels, you can add them in the same array. This vite config file can contain as many themes for as many panels as you like!
 
-#### Registering the viteTheme in our panel
+#### Registering the viteTheme() on our panel
 
-Now we shall edit the `CmsPanelProvider.php` file and add the viteTheme method to our `$panel`, like the example below:
+Now we shall edit the `AdminPanelProvider.php` file and add the viteTheme method to our `$panel`, like the example below:
 
 ```php
 return $panel
-    ->id('cms')
-    ->path('cms')
-    ->viteTheme('resources/css/filament/cms/theme.css') // Added this line of code
+    ->id('admin')
+    ->viteTheme('resources/css/filament/admin/theme.css') // Added this line of code
 ```
 
-Our panel now knows we are using a custom theme created under that path.
+Our panel now knows we are using a custom theme and what our theme path is.
 
 #### Running the build process
+
+![Build Process](./screenshots/npm-run-build.png)
 
 At last, we shall run the build process with the terminal in our project's root directory:
 
@@ -86,19 +90,22 @@ At last, we shall run the build process with the terminal in our project's root 
 npm run build
 ```
 
-### Registering vendor files
+### Registering vendor files from Filament Plugins
 
-Sometimes, when installing plugins like [Auth UI Enhancer](https://www.github.com/diogogpinto/filament-auth-ui-enhancer) or [Filament Curator](https://github.com/awcodes/filament-curator), for example, the docs say something to the effect of:
+Sometimes, when installing plugins like [Auth UI Enhancer](https://www.github.com/diogogpinto/filament-auth-ui-enhancer) or [Filament Curator](https://github.com/awcodes/filament-curator), for example, the docs may say something to the effect of:
 
 > 1. Add the plugin's views to your tailwind.config.js file.
 > ```javascript
 > content: [
 >     './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php',
-> ]```
+> ]
+> ```
 
-What this means is, you need to make sure that when we start the building process, it checks the files in the paths specified to collect all used CSS classes in the plugin that you'll need when rendering it.
+#### What does this mean?
 
-So, in our case, installing `Auth UI Enhancer` and `Curator`plugin in our panel, we will go to `resources/css/filament/cms/tailwind.config.js`and edit it like the code below:
+We need to make sure that - when we start the building process - `vite` will check the files in the paths specified in the `content`array and collect all used CSS classes in the plugin views. It will then compile all used CSS classes into the one single CSS file in your Filament panel. 
+
+So, in our case, installing `Auth UI Enhancer` and `Curator`plugin in our panel, we will go to `resources/css/filament/admin/tailwind.config.js`and edit it like the code below:
 
 ```js
 import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
@@ -116,7 +123,7 @@ export default {
 }
 ```
 
-Additionally, in the case of `Curator`, the plugin author requires you to import some CSS files in your `theme.css`. This can be done, by editing the file `resources/css/filament/cms/theme.css` and making it look like below:
+Additionally, in the case of the `Curator` plugin, the author requires you to import some CSS files in your `theme.css`. This can be done, by editing the file `resources/css/filament/admin/theme.css` and making it look like below:
 
 ```css
 @import '/vendor/filament/filament/resources/css/theme.css';
@@ -126,8 +133,11 @@ Additionally, in the case of `Curator`, the plugin author requires you to import
 @config 'tailwind.config.js';
 ```
 
-What we're doing here is importing all the vendor CSS files so when we run the build process they will be compiled and minimized in the same CSS file.
+This last step imports all custom classes needed by the plugin to render correctly to our panel's unique CSS file.
+
+What we're doing here is importing all the vendor CSS files so when we run the build process they will be compiled and minimized into the same CSS file.
 
 #### Running the build process
 
 When installing plugins and editing any theme related files, always remember to run `npm run build` when you're finished to compile all the assets.
+
