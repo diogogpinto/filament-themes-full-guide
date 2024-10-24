@@ -133,9 +133,7 @@ Additionally, in the case of the `Curator` plugin, the author requires you to im
 @config 'tailwind.config.js';
 ```
 
-This last step imports all custom classes needed by the plugin to render correctly to our panel's unique CSS file.
-
-What we're doing here is importing all the vendor CSS files so when we run the build process they will be compiled and minimized into the same CSS file.
+This last step imports all custom classes needed by the plugin to render correctly. It imports the class, put it to our panel's unique CSS file and minimizes it all for greater performance.
 
 #### Running the build process
 
