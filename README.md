@@ -1,9 +1,10 @@
 # Filament Custom Themes - The Full Guide
-A Full Guide on how to create a custom Filament Theme for your Filament v3.0 Panels.
+A Full Guide on how to create a custom Filament Theme for your Filament v3.0 Panels, that goes a little bit deeper than the original docs.
 
 ## Resources
-- [Filament Docs](https://filamentphp.com/docs/)
+- [Filament Official Documentation](https://filamentphp.com/docs/)
 - [Filament Official Documentation on Themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
+- [Filament Official Documentation on Style Customization](https://filamentphp.com/docs/3.x/support/style-customization)
 
 ## Before You Start
 
@@ -143,15 +144,26 @@ When installing plugins and editing any theme related files, always remember to 
 
 Laravel, and Filament being Laravel based, offer multiple solutions to the same problem. So, we will address two ways of building your own Filament look and feel, the recommended way and the not-so-recommended way. Let's start with the latter.
 
-### The non recommended way to customize your theme
+### Before starting the customization process
 
-One way of doing things, is publishing all the views of the Filament panels package. Why isn't this recommended? The docs say exactly why:
+You should start the `npm run dev` process in the root of your project. This process watches for changes in the files registered in the `vite.config.js` (and `tailwind.config.js` by extension) and automatically builds a temporary CSS file to render the changes on file save.
 
->You may be tempted to publish the internal Blade views to your application so that you can customize them. We don't recommend this, as it will introduce breaking changes into your application in future updates. Please use the CSS hook classes wherever possible.
+> [!note]
+> You still need to run `npm run build` when you're done customizing your theme
+
+### Customizing the theme the right way
+
+TBD
+
+### Customizing the theme the ~not so right~ way
+
+Another way of doing things, is publishing all the views of the Filament panels package. Why isn't this recommended? The docs say exactly why:
+
+> You may be tempted to publish the internal Blade views to your application so that you can customize them. We don't recommend this, as it will introduce breaking changes into your application in future updates. Please use the CSS hook classes wherever possible.
 > If you do decide to publish the Blade views, please lock all Filament packages to a specific version in your composer.json file, and then update Filament manually by bumping this number, testing your entire application after each update. This will help you identify breaking changes safely.
 
 > [!warning]
-> This is for demonstration purposes only, you really shouldn't do this as it can break your panels in future releases. If you need to do this, only publish the necessary files and lock filament to your project's current version
+> This is for demonstration purposes only, you really shouldn't do this as it can break your panels in future releases/updates. If you need to do this, only publish the necessary files and lock filament to your project's current version
 
 So, if you were to do this, you could run the following command in your terminal:
 
@@ -166,5 +178,4 @@ Now, inside your `resources/views/vendor/filament-panels` folder are a bunch of 
 > [!note]
 > All the changes you make to these files will render on ALL of your Filament panels in the project.
 
-Now let's do things the right way!
-
+Remember to the things the right way whenever possible.
