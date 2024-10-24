@@ -204,7 +204,7 @@ If you're editing the blade files directly, to blur the background of a topbar, 
 
 Now we can edit the <nav> tag, and make it look like the following:
 
-```php
+```html
 <nav
     class="flex h-16 items-center gap-x-4 bg-white bg-opacity-50 backdrop-blur-lg px-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:bg-opacity-50 dark:ring-white/10 md:px-6 lg:px-8"
 >
@@ -218,7 +218,7 @@ To make it look consistent in the sidebar, we should also open the following fil
 
 And change the <header> tag to make it look like:
 
-```php
+```html
 <header
     class="fi-sidebar-header flex h-16 items-center bg-white bg-opacity-50 backdrop-blur-lg px-6 ring-1 ring-gray-950/5 dark:bg-gray-900 dark:bg-opacity-50 dark:ring-white/10 lg:shadow-sm"
 >
