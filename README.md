@@ -151,11 +151,11 @@ You should start the `npm run dev` process in the root of your project. This pro
 > [!note]
 > You still need to run `npm run build` when you're done customizing your theme
 
-### Customizing the theme the right way
+### The recommended way to customize your theme
 
 TBD
 
-### Customizing the theme the ~not so right~ way
+### The ~wrong~ unrecommended way to customize your theme
 
 Another way of doing things, is publishing all the views of the Filament panels package. Why isn't this recommended? The docs say exactly why:
 
@@ -175,7 +175,62 @@ Now, inside your `resources/views/vendor/filament-panels` folder are a bunch of 
 
 ![Vendor Files](./screenshots/vendor-publish.png)
 
+Navigate to your themes `tailwind.config.css` and add the filament-panels folder to the content array, so vite can process these file changes. If you're following along, your file should look like this:
+
+```js
+import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
+
+export default {
+    presets: [preset],
+    content: [
+        './app/Filament/Clusters/Products/**/*.php',
+        './resources/views/filament/clusters/products/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
+        './vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php',
+        './vendor/awcodes/filament-curator/resources/**/*.blade.php',
+        // Added the following line of code
+        './resources/views/filament-panels/**/*.blade.php',
+    ],
+}
+```
+
+#### Example - make the topbar backdrop blur
+
+If you're editing the blade files directly, to blur the background of a topbar, you should open the following file:
+
+```
+./resources/views/vendor/filament-panels/components/topbar/index.php
+```
+
+Now we can edit the <nav> tag, and make it look like the following:
+
+```php
+<nav
+    class="flex h-16 items-center gap-x-4 bg-white bg-opacity-50 backdrop-blur-lg px-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:bg-opacity-50 dark:ring-white/10 md:px-6 lg:px-8"
+>
+```
+
+To make it look consistent in the sidebar, we should also open the following file:
+
+```
+./resources/views/vendor/filament-panels/components/sidebar/index.php
+```
+
+And change the <header> tag to make it look like:
+
+```php
+<header
+    class="fi-sidebar-header flex h-16 items-center bg-white bg-opacity-50 backdrop-blur-lg px-6 ring-1 ring-gray-950/5 dark:bg-gray-900 dark:bg-opacity-50 dark:ring-white/10 lg:shadow-sm"
+>
+```
+
+And there it is. We were able to customize the theme file in the unrecommended way. We shouldn't really do this, unless we want to add complex logic to the code. If this is the case, you can delete all the files except the ones you are directly going to modify.
+
+![Blade editing adding backdrop](./screenshots/blade-backdrop-blur.png)
+
 > [!note]
-> All the changes you make to these files will render on ALL of your Filament panels in the project.
+> All the changes you make to these files will render on ALL of your Filament panels in the project, unless you use some kind of conditional statements in your blade files.
+
+#### 
 
 Remember to the things the right way whenever possible.
