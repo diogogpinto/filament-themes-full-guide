@@ -139,3 +139,32 @@ This last step imports all custom classes needed by the plugin to render correct
 
 When installing plugins and editing any theme related files, always remember to run `npm run build` when you're finished to compile all the assets.
 
+## Customizing the theme
+
+Laravel, and Filament being Laravel based, offer multiple solutions to the same problem. So, we will address two ways of building your own Filament look and feel, the recommended way and the not-so-recommended way. Let's start with the latter.
+
+### The non recommended way to customize your theme
+
+One way of doing things, is publishing all the views of the Filament panels package. Why isn't this recommended? The docs say exactly why:
+
+>You may be tempted to publish the internal Blade views to your application so that you can customize them. We don't recommend this, as it will introduce breaking changes into your application in future updates. Please use the CSS hook classes wherever possible.
+> If you do decide to publish the Blade views, please lock all Filament packages to a specific version in your composer.json file, and then update Filament manually by bumping this number, testing your entire application after each update. This will help you identify breaking changes safely.
+
+> [!warning]
+> This is for demonstration purposes only, you really shouldn't do this as it can break your panels in future releases. If you need to do this, only publish the necessary files and lock filament to your project's current version
+
+So, if you were to do this, you could run the following command in your terminal:
+
+```bash
+php artisan vendor:publish --tag=filament-panels-views
+```
+
+Now, inside your `resources/views/vendor/filament-panels` folder are a bunch of files - these are the original view files you can (but shouldn't) customize.
+
+![Vendor Files](./screenshots/vendor-publish.png)
+
+> [!note]
+> All the changes you make to these files will render on ALL of your Filament panels in the project.
+
+Now let's do things the right way!
+
