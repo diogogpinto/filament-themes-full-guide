@@ -28,11 +28,11 @@ php artisan make:filament-theme
 
 It will scan your app for all the panels you have installed and let you select which panel this themes applies to. Select the panel which you wish to customize. In this particular case, we will select the panel `admin`.
 
-![Create Theme Terminal Command](./screenshots/create-theme.png)
+![Create Theme Terminal Command](./screenshots/create-theme.webp)
 
 After you've selected the panel, the terminal will give you all further instructions, but we'll go by each one step by step.
 
-![After Creating the Theme](./screenshots/after-create-theme.png)
+![After Creating the Theme](./screenshots/after-create-theme.webp)
 
 #### Editing vite.config.js
 
@@ -84,7 +84,7 @@ Our panel now knows we are using a custom theme and what our theme path is.
 
 #### Running the build process
 
-![Build Process](./screenshots/npm-run-build.png)
+![Build Process](./screenshots/npm-run-build.webp)
 
 At last, we shall run the build process with the terminal in our project's root directory:
 
@@ -156,7 +156,7 @@ You should start the `npm run dev` process in the root of your project. This pro
 
 The Filament panels core offers you a list of classes. Every component of the panel layout, including forms, infolists and tables, were wrapped in custom classes to make it possible, for any developer, to customize the panel look and feel. Let's look at the following example:
 
-![Breadcrumb Example](./screenshots/breadcrumb-example.png)
+![Breadcrumb Example](./screenshots/breadcrumb-example.webp)
 
 Looking at the breadcrumb component with Chrome's builtin devtools, you can see that the <nav> tag contains the following classes:
 
@@ -219,7 +219,7 @@ span.fi-breadcrumbs-item-label {
 }
 ```
 
-![Breadcrumbs Final Example](./screenshots/breadcrumbs-final.png)
+![Breadcrumbs Final Example](./screenshots/breadcrumbs-final.webp)
 
 There are a lot of classes around every Filament component. You can go through each one and apply your custom CSS, so you can create a unique design for your Panel.
 
@@ -251,7 +251,7 @@ php artisan vendor:publish --tag=filament-panels-views
 
 Now, inside your `resources/views/vendor/filament-panels` folder are a bunch of files - these are the original view files you can (but shouldn't) customize.
 
-![Vendor Files](./screenshots/vendor-publish.png)
+![Vendor Files](./screenshots/vendor-publish.webp)
 
 Navigate to your themes `tailwind.config.js` and add the filament-panels folder to the content array, so vite can process these file changes. If you're following along, your file should look like this:
 
@@ -304,7 +304,7 @@ And change the <header> tag to make it look like:
 
 And there it is. We were able to customize the theme file in the unrecommended way. We shouldn't really do this, unless we want to add complex logic to the code. If this is the case, you can delete all the files except the ones you are directly going to modify.
 
-![Blade editing adding backdrop](./screenshots/blade-backdrop-blur.png)
+![Blade editing adding backdrop](./screenshots/blade-backdrop-blur.webp)
 
 > [!note]
 > All the changes you make to these files will render on ALL of your Filament panels in the project, unless you use some kind of conditional statements in your blade files.
