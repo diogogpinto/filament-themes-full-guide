@@ -224,7 +224,14 @@ span.fi-breadcrumbs-item-label {
 There are a lot of classes around every Filament component. You can go through each one and apply your custom CSS, so you can create a unique design for your Panel.
 
 > [!TIP]
-> There's a Filament Plugin ([Theme Inspector](https://filamentphp.com/plugins/codewithdennis-theme-inspector)) that lets you inspect all the classes in your panel in your dev environment. You can even copy to clipboard! It really smoothes the development process. 
+> There's a useful Filament Plugin ([Theme Inspector](https://filamentphp.com/plugins/codewithdennis-theme-inspector)) that lets you inspect all the classes in your panel in your dev environment. You can even copy to clipboard! It really smoothes the development process. 
+
+### Going behind CSS
+
+Sometimes there are some things your theme requires that go behind CSS. You may want to add a custom Livewire component, Blade View or JS script. As these modifications are outside the scope of this guide, I would advise you to check the following resources:
+
+- [Render Hooks on the Official Docs](https://filamentphp.com/docs/3.x/support/render-hooks) - check how you can render custom views almost anywhere in your panels
+- [Registering Assets](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) - check how you can register custom JS/css into your Filament panels
 
 ### The ~wrong~ unrecommended way to customize your theme
 
