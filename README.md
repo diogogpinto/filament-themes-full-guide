@@ -158,7 +158,7 @@ The Filament panels core offers you a list of classes. Every component of the pa
 
 ![Breadcrumb Example](./screenshots/breadcrumb-example.webp)
 
-Looking at the breadcrumb component with Chrome's builtin Developer Tools > Inspect Element, you can see that the <nav> tag contains the following classes:
+Looking at the breadcrumb component with Chrome's builtin Developer Tools > Inspect Element, you can see that the `<nav>`na tag contains the following classes:
 
 ```html
     <nav class="fi-breadcrumbs mb-2 hidden sm:block">
@@ -280,7 +280,7 @@ If you're editing the blade files directly, to blur the background of a topbar, 
 ./resources/views/vendor/filament-panels/components/topbar/index.php
 ```
 
-Now we can edit the <nav> tag, and make it look like the following:
+Now we can edit the `<nav>` tag, and make it look like the following:
 
 ```html
 <nav
@@ -294,7 +294,7 @@ To make it look consistent in the sidebar, we should also open the following fil
 ./resources/views/vendor/filament-panels/components/sidebar/index.php
 ```
 
-And change the <header> tag to make it look like:
+And change the `<header>` tag to make it look like:
 
 ```html
 <header
