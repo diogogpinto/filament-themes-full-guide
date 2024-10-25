@@ -3,8 +3,8 @@ A Full Guide on how to create a custom Filament Theme for your Filament v3.0 Pan
 
 ## Resources
 - [Filament Official Documentation](https://filamentphp.com/docs/)
--- [Filament Official Documentation on Themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
--- [Filament Official Documentation on Style Customization](https://filamentphp.com/docs/3.x/support/style-customization)
+  - [Filament Official Documentation on Themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
+  - [Filament Official Documentation on Style Customization](https://filamentphp.com/docs/3.x/support/style-customization)
 - [Tailwind Official Documentation](https://tailwindcss.com/docs/installation)
 
 ## Before You Start
