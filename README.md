@@ -161,14 +161,14 @@ The Filament panels core offers you a list of classes. Every component of the pa
 Looking at the breadcrumb component with Chrome's builtin Developer Tools > Inspect Element, you can see that the `<nav>`na tag contains the following classes:
 
 ```html
-    <nav class="fi-breadcrumbs mb-2 hidden sm:block">
+<nav class="fi-breadcrumbs mb-2 hidden sm:block">
 ```
 
-The `.fi-breadcrumbs` class is inserted to allow users to further optimize the breadcrumbs' look and feel. By default, the class has no CSS properties defined in itself, it's only there for the developer to apply custom styles.
+The `.fi-breadcrumbs` class is inserted to allow developers to further optimize the breadcrumbs' look and feel. By default, the class has no CSS properties defined in itself, it's only there for the developer to apply custom styles.
 
 #### Customizing the CSS
 
-Picking up in the above example of `.fi-breadcrumbs`, we can now apply custom CSS classes on our `theme.css`. You can either use Tailwind utility classes or just write vanilla CSS. Let's say you wnt to override the default margin `mb-2`. Inputting the below CSS will yield the exact same results:
+Picking up in the above example of `.fi-breadcrumbs`, we can now apply custom CSS classes on our `theme.css`. You can either use Tailwind utility classes or just write vanilla CSS. Let's say you want to override the default margin `mb-2`. Inputting the below CSS will yield the exact same results:
 
 ```css
 .fi-breadcrumbs {
@@ -176,9 +176,8 @@ Picking up in the above example of `.fi-breadcrumbs`, we can now apply custom CS
 }
 
 .fi-breadcrumbs {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
-
 ```
 
 As the `.fi-breadcrumbs` class is inserted before the default Tailwind utility classes, applying custom CSS will always override the default style.
