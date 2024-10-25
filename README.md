@@ -135,7 +135,7 @@ Additionally, in the case of the `Curator` plugin, the author requires you to im
 @config 'tailwind.config.js';
 ```
 
-This last step imports all custom classes needed by the plugin to render correctly. It imports the class, put it to our panel's unique CSS file and minimizes it all for greater performance.
+This last step imports all custom classes needed by the plugin to render correctly. It imports the class, puts into our panel's unique CSS file and minimizes it all for greater performance.
 
 #### Running the build process
 
@@ -158,7 +158,7 @@ The Filament panels core offers you a list of classes. Every component of the pa
 
 ![Breadcrumb Example](./screenshots/breadcrumb-example.webp)
 
-Looking at the breadcrumb component with Chrome's builtin devtools, you can see that the <nav> tag contains the following classes:
+Looking at the breadcrumb component with Chrome's builtin Developer Tools > Inspect Element, you can see that the <nav> tag contains the following classes:
 
 ```html
     <nav class="fi-breadcrumbs mb-2 hidden sm:block">
@@ -231,7 +231,7 @@ There are a lot of classes around every Filament component. You can go through e
 Sometimes there are some things your theme requires that go behind CSS. You may want to add a custom Livewire component, Blade View or JS script. As these modifications are outside the scope of this guide, I would advise you to check the following resources:
 
 - [Render Hooks on the Official Docs](https://filamentphp.com/docs/3.x/support/render-hooks) - check how you can render custom views almost anywhere in your panels
-- [Registering Assets](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) - check how you can register custom JS/css into your Filament panels
+- [Registering Assets](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) - check how you can register custom JS/CSS into your Filament panels
 
 ### The ~wrong~ unrecommended way to customize your theme
 
