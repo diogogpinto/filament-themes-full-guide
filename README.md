@@ -3,8 +3,9 @@ A Full Guide on how to create a custom Filament Theme for your Filament v3.0 Pan
 
 ## Resources
 - [Filament Official Documentation](https://filamentphp.com/docs/)
-- [Filament Official Documentation on Themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
-- [Filament Official Documentation on Style Customization](https://filamentphp.com/docs/3.x/support/style-customization)
+-- [Filament Official Documentation on Themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)
+-- [Filament Official Documentation on Style Customization](https://filamentphp.com/docs/3.x/support/style-customization)
+- [Tailwind Official Documentation](https://tailwindcss.com/docs/installation)
 
 ## Before You Start
 
@@ -153,7 +154,77 @@ You should start the `npm run dev` process in the root of your project. This pro
 
 ### The recommended way to customize your theme
 
-TBD
+The Filament panels core offers you a list of classes. Every component of the panel layout, including forms, infolists and tables, were wrapped in custom classes to make it possible, for any developer, to customize the panel look and feel. Let's look at the following example:
+
+![Breadcrumb Example](./screenshots/breadcrumb-example.png)
+
+Looking at the breadcrumb component with Chrome's builtin devtools, you can see that the <nav> tag contains the following classes:
+
+```html
+    <nav class="fi-breadcrumbs mb-2 hidden sm:block">
+```
+
+The `.fi-breadcrumbs` class is inserted to allow users to further optimize the breadcrumbs' look and feel. By default, the class has no CSS properties defined in itself, it's only there for the developer to apply custom styles.
+
+#### Customizing the CSS
+
+Picking up in the above example of `.fi-breadcrumbs`, we can now apply custom CSS classes on our `theme.css`. You can either use Tailwind utility classes or just write vanilla CSS. Let's say you wnt to override the default margin `mb-2`. Inputting the below CSS will yield the exact same results:
+
+```css
+.fi-breadcrumbs {
+    @apply mb-4;
+}
+
+.fi-breadcrumbs {
+    margin-bottom: 16px;
+}
+
+```
+
+As the `.fi-breadcrumbs` class is inserted before the default Tailwind utility classes, applying custom CSS will always override the default style.
+
+#### Diving deeper
+
+If we dive deeper into the breadcrumbs, we will find all the following classes, in this hierarchy:
+
+```
+- .fi-breadcrumbs
+-- .fi-breadcrumbs-list
+--- .fi-breadcrumbs-item
+---- .fi-breadcrumbs-item-separator
+---- .fi-breadcrumbs-item-label
+```
+
+Let's say we want to really change the breadcrumbs appearance. We can style each of this classes. Check the following example:
+
+```css
+.fi-breadcrumbs-list {
+    @apply gap-x-0;
+}
+
+.fi-breadcrumbs-item {
+    @apply gap-x-0;
+}
+
+.fi-breadcrumbs-item-label {
+    @apply font-thin dark:text-primary-500 text-primary-500;
+}
+
+span.fi-breadcrumbs-item-label {
+    @apply border-b-2 border-b-primary-500 font-semibold -mb-[2px];
+}
+
+.fi-breadcrumbs-item-separator {
+    @apply fill-primary-500 h-4;
+}
+```
+
+![Breadcrumbs Final Example](./screenshots/breadcrumbs-final.png)
+
+There are a lot of classes around every Filament component. You can go through each one and apply your custom CSS, so you can create a unique design for your Panel.
+
+> [!TIP]
+> There's a Filament Plugin ([Theme Inspector](https://filamentphp.com/plugins/codewithdennis-theme-inspector)) that lets you inspect all the classes in your panel in your dev environment. You can even copy to clipboard! It really smoothes the development process. 
 
 ### The ~wrong~ unrecommended way to customize your theme
 
@@ -175,7 +246,7 @@ Now, inside your `resources/views/vendor/filament-panels` folder are a bunch of 
 
 ![Vendor Files](./screenshots/vendor-publish.png)
 
-Navigate to your themes `tailwind.config.css` and add the filament-panels folder to the content array, so vite can process these file changes. If you're following along, your file should look like this:
+Navigate to your themes `tailwind.config.js` and add the filament-panels folder to the content array, so vite can process these file changes. If you're following along, your file should look like this:
 
 ```js
 import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
